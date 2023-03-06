@@ -1,7 +1,3 @@
-cd
-
-sudo 
-
 ./delete_nf_martin.sh
 
 sleep 5
