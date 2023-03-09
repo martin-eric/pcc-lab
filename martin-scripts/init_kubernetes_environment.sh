@@ -1,7 +1,21 @@
+SCRIPTV="1.1"
+MYBASENAME=$( basename -- "$0"; )
+MYDIRNAME=$( dirname -- "$0"; )
+MYPWD=$( pwd; )
+
+#echo "The script you are running has basename $MYBASENAME, and dirname $MYDIRNAME ";
+#echo "The present working directory is $MYPWD";
+
+echo "**************************************"
+echo "Script name: $MYBASENAME"
+echo "Script version: $SCRIPTV"
+echo "**************************************"
+
+echo "Initializing the kubernetes cluster"
+
 ## 6.13 
 
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
-#sudo kubeadm init --pod-network-cidr=172.16.0.0/16
 mkdir -p $HOME/.kube
 sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -26,11 +40,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/minikube/v0.35.0/d
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/minikube/v0.35.0/deploy/addons/storage-provisioner/storage-provisioner.yaml
 
 ## 6.21
-cd /home/ericsson/PCC_1_Drop_13/host-setup
-sudo apparmor_parser -r -W apparmor-docker-pcc
-sudo cp host-local-pcc /opt/cni/bin/host-local-pcc
+#cd /home/ericsson/PCC_1_Drop_13/host-setup
+sudo apparmor_parser -r -W /home/ericsson/PCC_1_Drop_13/host-setup/apparmor-docker-pcc
+sudo cp /home/ericsson/PCC_1_Drop_13/host-setup/host-local-pcc /opt/cni/bin/host-local-pcc
 sudo chmod a+x /opt/cni/bin/host-local-pcc
-cd
+#cd
 
 
-./check_environment_ready.sh
+$MYPWD/check_environment_ready.sh

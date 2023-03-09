@@ -11,11 +11,17 @@ echo "Script name: $MYBASENAME"
 echo "Script version: $SCRIPTV"
 echo "**************************************"
 
-echo "Creating a cMME and GW Controler and PCG with sgw and pgw functionality"
+echo "Removing nf with names martin"
+$MYPWD/delete_nf_martin.sh
 
-./create_martin_cMME_cEPG_pcc1.sh
-sleep 15
-./create_martin_pgw-u-1.sh
-sleep 15
-./create_martin_sgw-u-1.sh
+sleep 5
+
+echo "Resetting Kubernetes cluster"
+$MYPWD/reset_kubernetes_environment.sh
+
+sleep 10
+
+echo "Powering off the VM"
+sudo poweroff
+
 

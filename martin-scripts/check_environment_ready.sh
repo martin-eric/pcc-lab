@@ -1,5 +1,18 @@
 SCRIPTV="0.1"
 
+MYBASENAME=$( basename -- "$0"; )
+MYDIRNAME=$( dirname -- "$0"; )
+MYPWD=$( pwd; )
+
+#echo "The script you are running has basename $MYBASENAME, and dirname $MYDIRNAME ";
+#echo "The present working directory is $MYPWD";
+
+echo "**************************************"
+echo "Script version: $SCRIPTV"
+echo "**************************************"
+
+echo "Verifying if HELM and the kubernetes cluster is healthy and stable"
+
 i=1
 j=1
 waittime=5

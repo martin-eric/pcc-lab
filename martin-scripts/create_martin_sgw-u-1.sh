@@ -1,3 +1,19 @@
+SCRIPTV="1.1"
+MYBASENAME=$( basename -- "$0"; )
+MYDIRNAME=$( dirname -- "$0"; )
+MYPWD=$( pwd; )
+
+#echo "The script you are running has basename $MYBASENAME, and dirname $MYDIRNAME ";
+#echo "The present working directory is $MYPWD";
+
+echo "**************************************"
+echo "Script name: $MYBASENAME"
+echo "Script version: $SCRIPTV"
+echo "**************************************"
+
+echo "Creating a PCG with sgw functionality"
+
+
 cd /home/ericsson/5gc_files_pkg/config/martin-sgw-pcg-1/
 
 kubectl create ns martin-sgw-pcg-1
